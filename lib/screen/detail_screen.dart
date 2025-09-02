@@ -15,12 +15,15 @@ class DetailScreen extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(12),
             child: Image.network(newsDetail['image']['large']),
           ),
-          SizedBox(height: 14,),
+          SizedBox(height: 14),
           Text(
             newsDetail['title'],
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          Text(newsDetail['contentSnippet'], style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),)
+          Text(
+            newsDetail['contentSnippet'],
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+          ),
         ],
       ),
     );
