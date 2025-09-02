@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/api/api.dart';
 import 'package:news_app/screen/detail_screen.dart';
+import 'package:intl/intl.dart';
 
 class ApiScreen extends StatefulWidget {
   const ApiScreen({super.key});
@@ -16,13 +17,21 @@ class _ApiScreenState extends State<ApiScreen> {
 
   Widget categoryButton(String label, String type) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _selectedCategory == type ? Colors.blue : Colors.grey,
+      ),
       onPressed: () {
         setState(() {
           _selectedCategory = type;
         });
       },
-      child: Text(label),
+      child: Text(label, style: TextStyle(color: Colors.white)),
     );
+  }
+
+  String formatDate(String date) {
+    DateTime dateTime = DateTime.parse(date);
+    return DateFormat('dd MMM yyy, hh:mm').format(dateTime);
   }
 
   @override
@@ -36,11 +45,17 @@ class _ApiScreenState extends State<ApiScreen> {
             child: Row(
               children: [
                 categoryButton('semua', ''),
+                SizedBox(width: 5),
                 categoryButton('nasional', 'nasional'),
+                SizedBox(width: 5),
                 categoryButton('internasional', 'internasional'),
+                SizedBox(width: 5),
                 categoryButton('ekonomi', 'ekonomi'),
+                SizedBox(width: 5),
                 categoryButton('olahraga', 'olahraga'),
+                SizedBox(width: 5),
                 categoryButton('hiburan', 'hiburan'),
+                SizedBox(width: 5),
                 categoryButton('gaya-hidup', 'gaya-hidupg'),
               ],
             ),
@@ -149,7 +164,8 @@ class _ApiScreenState extends State<ApiScreen> {
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    item['isoDate'], // Anda bisa format ini nanti
+                                    formatDate(item['isoDate']),
+                                    // Anda bisa format ini nanti
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
