@@ -68,6 +68,7 @@ class _ApiScreenState extends State<ApiScreen> {
         setState(() {
           _selectedCategory = type;
         });
+        fetchNews(type);
       },
       child: Text(label, style: TextStyle(color: Colors.white)),
     );
