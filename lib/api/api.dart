@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:get/get_connect/connect.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
@@ -15,7 +15,7 @@ class Api {
       final jsonList = json['data'] as List;
       return jsonList.map((e) => e as Map<String, dynamic>).toList();
     } else {
-      throw Exception('gagal menampilkan data');
+      throw Exception('Gagal menampilkan data');
     }
   }
 }

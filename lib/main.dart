@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/screen/api_screen.dart';
+import 'package:news_app/controller/news_controller.dart';
+import 'package:news_app/screen/news_screen.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final NewsController c = Get.put(NewsController());
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: c.isTheme.value ? ThemeMode.dark : ThemeMode.light,
       debugShowCheckedModeBanner: false,
-      home: const ApiScreen(),
+      home: ApiScreen(),
     );
   }
 }
