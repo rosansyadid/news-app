@@ -1,6 +1,7 @@
 // lib/controller/news_controller.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:news_app/api/api.dart';
 
 class NewsController extends GetxController {
@@ -8,7 +9,6 @@ class NewsController extends GetxController {
   var filteredNews = <Map<String, dynamic>>[].obs;
   var isLoading = false.obs;
   var selectedCategory = ''.obs;
-  var isTheme = false.obs;
 
   @override
   void onInit() {

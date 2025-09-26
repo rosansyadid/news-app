@@ -42,7 +42,7 @@ class ApiScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Newsly',
           style: TextStyle(fontFamily: 'Playfair Display', fontSize: 28),
         ),
@@ -51,20 +51,20 @@ class ApiScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        padding: EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
           children: [
             // 🔍 Search bar
             Container(
-              margin: const EdgeInsets.only(top: 10, bottom: 15),
+              margin:  EdgeInsets.only(top: 10, bottom: 15),
               child: TextField(
                 controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search news...',
-                  prefixIcon: const Icon(Icons.search, color: Colors.grey),
+                  prefixIcon:  Icon(Icons.search, color: Colors.grey),
                   filled: true,
                   fillColor: Colors.white,
-                  contentPadding: const EdgeInsets.symmetric(
+                  contentPadding: EdgeInsets.symmetric(
                     vertical: 0,
                     horizontal: 16,
                   ),
@@ -95,7 +95,7 @@ class ApiScreen extends StatelessWidget {
                     final isSelected =
                         controller.selectedCategory.value == cat['value'];
                     return Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
+                      padding:  EdgeInsets.only(right: 8.0),
                       child: ChoiceChip(
                         label: Text(cat['label']!),
                         selected: isSelected,
@@ -115,17 +115,17 @@ class ApiScreen extends StatelessWidget {
                 ),
               );
             }),
-            const SizedBox(height: 10),
+             SizedBox(height: 10),
 
             // 📑 News List
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.value) {
-                  return const Center(child: CircularProgressIndicator());
+                  return Center(child: CircularProgressIndicator());
                 }
 
                 if (controller.filteredNews.isEmpty) {
-                  return const Center(child: Text("No News Found"));
+                  return Center(child: Text("No News Found"));
                 }
 
                 return ListView.builder(
@@ -143,7 +143,7 @@ class ApiScreen extends StatelessWidget {
                         Get.to(() => DetailScreen(newsDetail: item));
                       },
                       child: Container(
-                        margin: const EdgeInsets.only(bottom: 12),
+                        margin: EdgeInsets.only(bottom: 12),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
@@ -151,7 +151,7 @@ class ApiScreen extends StatelessWidget {
                             BoxShadow(
                               color: Colors.black.withOpacity(0.05),
                               blurRadius: 10,
-                              offset: const Offset(0, 4),
+                              offset: Offset(0, 4),
                             ),
                           ],
                         ),
@@ -160,7 +160,7 @@ class ApiScreen extends StatelessWidget {
                           children: [
                             // 🖼 Gambar
                             ClipRRect(
-                              borderRadius: const BorderRadius.only(
+                              borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(16),
                                 bottomLeft: Radius.circular(16),
                               ),
@@ -174,17 +174,17 @@ class ApiScreen extends StatelessWidget {
                                     width: 120,
                                     height: 100,
                                     color: Colors.grey[200],
-                                    child: const Icon(Icons.broken_image),
+                                    child: Icon(Icons.broken_image),
                                   );
                                 },
                               ),
                             ),
-                            const SizedBox(width: 10),
+                           SizedBox(width: 10),
 
                             // 📄 Info berita
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
+                                padding: EdgeInsets.symmetric(
                                   vertical: 10,
                                 ),
                                 child: Column(
@@ -192,7 +192,7 @@ class ApiScreen extends StatelessWidget {
                                   children: [
                                     // Category
                                     Container(
-                                      padding: const EdgeInsets.symmetric(
+                                      padding: EdgeInsets.symmetric(
                                         horizontal: 8,
                                         vertical: 4,
                                       ),
@@ -209,20 +209,20 @@ class ApiScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(height: 6),
+                                    SizedBox(height: 6),
 
                                     // Judul
                                     Text(
                                       title,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                         height: 1.3,
                                       ),
                                     ),
-                                    const SizedBox(height: 6),
+                                     SizedBox(height: 6),
 
                                     // Date
                                     Text(
